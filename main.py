@@ -20,7 +20,7 @@ api = FastAPI()
 #Mensaje conexion para despliegue en heroku
 @api.get("/")
 async def root():
-    return {"message" : "Hola mundo desde heroku"}
+    return {"message" : "Hola mundo desde heroku, prueba"}
 
 #se implementa de la funcionalidad auth_user:
 @api.post("/user/auth/")
