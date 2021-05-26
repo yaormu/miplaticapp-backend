@@ -17,6 +17,11 @@ from fastapi import HTTPException
 
 api = FastAPI()
 
+#Mensaje conexion para despliegue en heroku
+@api.get("/")
+async def root():
+    return {"message" : "Hola mundo desde heroku"}
+
 #se implementa de la funcionalidad auth_user:
 @api.post("/user/auth/")
 async def auth_user(user_in: UserIn):
