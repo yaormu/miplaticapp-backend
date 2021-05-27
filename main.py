@@ -7,6 +7,8 @@ from db.transaction_db import save_transaction
 
 from models.user_models import UserIn, UserOut
 from models.transaction_models import TransactionIn, TransactionOut
+#controla el acceso a una aplicación, dependiendo del origen de las peticiones
+from fastapi.middleware.cors import CORSMiddleware
 
 #mportan algunos paquetes adicionales y se crea la api
 #(un herramienta que agrupará las operaciones):
@@ -16,6 +18,18 @@ from fastapi import FastAPI
 from fastapi import HTTPException
 
 api = FastAPI()
+
+#URL desde donde se puede consumir el servicio
+origins = [
+    "http://localhost.tiangolo.com", "https://localhost.tiangolo.com",
+    "http://localhost", "http://localhost:8080",
+]
+
+#Que tipo de información puedo recibir
+api.add_middleware(
+    CORSMiddleware, allow_origins=origins,
+    allow_credentials=True, allow_methods=["*"], allow_headers=["*"],
+)
 
 #Mensaje conexion para despliegue en heroku
 @api.get("/")
