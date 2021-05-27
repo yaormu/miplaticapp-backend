@@ -1,4 +1,4 @@
-#importacion de modelos creados
+#importacion de modelos creados locales
 from db.user_db import UserInDB
 from db.user_db import update_user, get_user
 
@@ -10,19 +10,19 @@ from models.transaction_models import TransactionIn, TransactionOut
 #controla el acceso a una aplicación, dependiendo del origen de las peticiones
 from fastapi.middleware.cors import CORSMiddleware
 
-#mportan algunos paquetes adicionales y se crea la api
-#(un herramienta que agrupará las operaciones):
 import datetime
 
 from fastapi import FastAPI
 from fastapi import HTTPException
 
+#nombre del proyecto
 api = FastAPI()
 
 #URL desde donde se puede consumir el servicio
 origins = [
     "http://localhost.tiangolo.com", "https://localhost.tiangolo.com",
-    "http://localhost", "http://localhost:8080",
+    "http://localhost", "http://localhost:8080", 
+    "https://backend-miplaticapp.herokuapp.com/",
 ]
 
 #Que tipo de información puedo recibir
@@ -32,9 +32,9 @@ api.add_middleware(
 )
 
 #Mensaje conexion para despliegue en heroku
-@api.get("/")
-async def root():
-    return {"message" : "Hola mundo desde heroku, prueba"}
+#@api.get("/")
+#async def root():
+#    return {"message" : "Hola mundo desde heroku, prueba"}
 
 #se implementa de la funcionalidad auth_user:
 @api.post("/user/auth/")
@@ -73,5 +73,4 @@ async def make_transaction(transaction_in: TransactionIn):
     transaction_in_db = TransactionInDB(**transaction_in.dict(), actual_balance = user_in_db.balance)
     transaction_in_db = save_transaction(transaction_in_db)
     transaction_out = TransactionOut(**transaction_in_db.dict())
-    
     return transaction_out

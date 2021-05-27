@@ -13,15 +13,15 @@ database_users = Dict[str, UserInDB]
 database_users = {
     "camilo24": UserInDB(**{"username":"camilo24",
                             "password":"root",
-                            "balance":12000}),
+                            "balance":2000000}),
 
     "andres18": UserInDB(**{"username":"andres18",
                             "password":"hola",
-                            "balance":34000}),
+                            "balance":3500000}),
 
     "jeisson": UserInDB(**{"username":"jeisson",
                             "password":"123",
-                            "balance":100000}),
+                            "balance":1000000}),
 }
 
 #definición de funciones sobre la base de datos fictica
