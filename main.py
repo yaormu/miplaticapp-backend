@@ -7,13 +7,12 @@ from db.transaction_db import save_transaction
 
 from models.user_models import UserIn, UserOut
 from models.transaction_models import TransactionIn, TransactionOut
-#controla el acceso a una aplicación, dependiendo del origen de las peticiones
-from fastapi.middleware.cors import CORSMiddleware
 
 import datetime
-
 from fastapi import FastAPI
 from fastapi import HTTPException
+#controla el acceso a una aplicación, dependiendo del origen de las peticiones
+from fastapi.middleware.cors import CORSMiddleware
 
 #nombre del proyecto
 api = FastAPI()
@@ -22,7 +21,7 @@ api = FastAPI()
 origins = [
     "http://localhost.tiangolo.com", "https://localhost.tiangolo.com",
     "http://localhost", "http://localhost:8080", 
-    "https://backend-miplaticapp.herokuapp.com/",
+    #"https://backend-miplaticapp.herokuapp.com/",
 ]
 
 #Que tipo de información puedo recibir
