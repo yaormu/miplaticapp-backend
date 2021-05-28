@@ -17,11 +17,11 @@ from fastapi.middleware.cors import CORSMiddleware
 #nombre del proyecto
 api = FastAPI()
 
-#URL desde donde se puede consumir el servicio
+#URL desde donde se puede mostrar el servicio
 origins = [
     "http://localhost.tiangolo.com", "https://localhost.tiangolo.com",
     "http://localhost", "http://localhost:8080", 
-    "https://frontend-miplaticapp.herokuapp.com/",
+    "https://backend-miplaticapp.herokuapp.com/",
 ]
 
 #Que tipo de información puedo recibir
